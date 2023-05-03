@@ -32,6 +32,7 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 });
 
+
 Route::get('password/reset', Email::class)
     ->name('password.request');
 
