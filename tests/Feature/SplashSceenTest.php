@@ -2,7 +2,7 @@
 
 use function Pest\Laravel\get;
 
-it('checks if home page is working')
+it('checks if root page is working')
     ->get('/')
     ->assertOK();
 
