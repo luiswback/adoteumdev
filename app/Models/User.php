@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'github_user',
     ];
 
     /**
@@ -44,31 +45,37 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function interest(): HasOne{
+    public function interest(): HasOne
+    {
         return $this->hasOne(Interest::class);
     }
 
-    public function preference(): HasOne{
+    public function preference(): HasOne
+    {
         return $this->hasOne(Preference::class);
     }
 
-    public function sentActions(): HasMany{
+    public function sentActions(): HasMany
+    {
         return $this->hasMany(Action::class, 'from_user_id', 'id');
 
     }
 
-    public function receivedActions(): HasMany{
+    public function receivedActions(): HasMany
+    {
 
         return $this->hasMany(Action::class, 'to_user_id', 'id');
 
     }
 
-    public function sentMessages(): HasMany{
+    public function sentMessages(): HasMany
+    {
         return $this->hasMany(Message::class, 'from_user_id', 'id');
 
     }
 
-    public function receivedMessages(): HasMany{
+    public function receivedMessages(): HasMany
+    {
 
         return $this->hasMany(Message::class, 'to_user_id', 'id');
 
