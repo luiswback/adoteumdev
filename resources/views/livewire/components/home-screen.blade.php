@@ -14,13 +14,13 @@
                 deleniti deserunt, dignissimos eveniet neque nisi odio optio perspiciatis provident quidem quo
                 repellendus saepe temporibus ullam vero?
             </p>
-            <button
+            <button wire:click="loginAsDev"
                 class="flex flex-row items-center justify-center space-x-2 bg-white p-4 text-grey-100 mt-8 w-full text-sm rounded-full font-bold transform duration-150 active:scale-90">
 
                 <img src="{{asset('assets/github-mark.svg')}}" alt="" height="25" width="25">
                 <span>Entrar como Desenvolvedor</span>
             </button>
-            <button
+            <button wire:click="loginAsRecruiter"
                 class="flex flex-row items-center justify-center space-x-2 bg-white p-4 text-grey-100 mt-4 w-full text-sm rounded-full mb-8 font-bold transform duration-150 active:scale-90">
                 <img src="{{asset('assets/logo-google.png')}}" alt="" height="25" width="25">
                 <span>Entrar como Recrutador</span>
