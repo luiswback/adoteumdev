@@ -14,11 +14,9 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/', SplashScreen::class)->name('app.splash');
 Route::get('home', HomeScreen::class)->name('app.home');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('interesting', InterestScreen::class)->name('app.interest');
-    Route::get('preferences', PreferenceScreen::class)->name('app.preference');
-    Route::get('developers', DeveloperListScreen::class)->name('app.developerList');
-});
+Route::get('interesting', InterestScreen::class)->name('app.interest');
+Route::get('preferences', PreferenceScreen::class)->name('app.preference');
+Route::get('developers', DeveloperListScreen::class)->name('app.developerList');
 
 
 Route::get('/auth/redirect', function () {
