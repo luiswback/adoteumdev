@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -18,6 +18,7 @@ class GoogleController extends Controller
     const NAME = 'GOOGLE';
 
     protected User $authUser;
+
 
     public function __invoke(): RedirectResponse
     {
@@ -57,7 +58,7 @@ class GoogleController extends Controller
             return redirect()->route('app.developerList');
 
 
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             DB::rollBack();
             dd($exception->getMessage());
         }
