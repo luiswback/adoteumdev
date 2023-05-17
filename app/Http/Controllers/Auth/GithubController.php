@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -26,31 +27,32 @@ class GithubController extends Controller
                 $this->authUser = User::updateOrCreate([
                     'email' => $user->email,
                 ], [
-                    'github_user' => $user->token,
                     'name' => $user->name,
                     'password' => Hash::make(Str::random('10'))
 
-                ]);
+                ])->load('interest', 'preference');
                 Profile::updateOrCreate([
                     'user_id' => $this->authUser->id
                 ], [
                     'provider' => self::NAME,
-                    'auth_id' => $user->id,
+                    'provider_user_id' => $user->id,
                     'nickname' => $user->nickname,
                     'avatar' => $user->avatar,
                     'data' => json_encode($user->user)
                 ]);
             }, 3);
 
+            Auth::login($this->authUser);
+
             if (is_null($this->authUser->interest)) {
-                return redirect()->route('INTERESSES');
+                return redirect()->route('app.interest');
             }
 
             if (is_null($this->authUser->preference)) {
-                return redirect()->route('PREFERENCIAS');
+                return redirect()->route('app.preference');
             }
 
-            return redirect()->route('LISTAGEM');
+            return redirect()->route('app.developerList');
 
 
         } catch (\Exception $exception) {
