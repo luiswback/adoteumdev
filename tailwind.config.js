@@ -9,19 +9,19 @@ module.exports = {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary:{
+                primary: {
                     100: '#FE3C72',
                     75: '#FE6B94',
                     50: '#FE9DB8',
                     25: '#FFCEDC',
                 },
-                secondary:{
+                secondary: {
                     100: '#FF7854',
                     75: '#FF9A7F',
                     50: '#FFBBA9',
                     25: '#FFDDD4',
                 },
-                grey:{
+                grey: {
                     100: '#424242',
                     75: '#717171',
                     50: '#A0A0A0',
@@ -57,5 +57,6 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
+        require('@tailwindcss/forms'),
     ],
 };
